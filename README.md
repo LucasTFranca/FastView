@@ -1,2 +1,3 @@
 # FastView
-copyright by Lucas T Franca
+
+Copyright by Lucas T Franca
