@@ -55,6 +55,8 @@ h1 {
 
 #table-information tr:nth-child(even){background-color: #252525;}
 
+#table-information tr:nth-child(odd){background-color: rgb(109, 109, 109);}
+
 #table-information tr:hover {background-color: #343434;}
 
 #table-information th {
