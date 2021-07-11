@@ -3,4 +3,4 @@
 Copyright by Lucas T Franca
 
 Representação de como utilizar o FastView!
-![Project](./project.mkv)
+![Project](./project.gif)
