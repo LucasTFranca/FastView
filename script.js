@@ -71,8 +71,8 @@ async function getPull(owner, repo, pullRequest) {
         commentIndex = index;
       }
     }
-  })
-  const bestComment = data[commentIndex].body
+  });
+  const bestComment = data[commentIndex].body;
 
   const content = await getContent(bestComment, repo, owner, pullRequest);
   const [ userName ] = content;
