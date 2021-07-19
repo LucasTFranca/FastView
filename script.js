@@ -62,9 +62,19 @@ async function getContent(comment, repo, owner, pullRequest) {
 async function getPull(owner, repo, pullRequest) {
   const response = await fetch(`${baseURL}repos/${owner}/${repo}/issues/${pullRequest}/comments?per_page=100`);
   const data = await response.json();
-  const lastComment = data[data.length - 1].body;
+  let percentage = 0;
+  let commentIndex = 0;
+  data.forEach((item, index) => {
+    if (item.body[4] === 'R') {
+      if (parseFloat(item.body.match(/(?<=totais \| ).*/i)[0]) > percentage) {
+        percentage = parseFloat(item.body.match(/(?<=totais \| ).*/i)[0]);
+        commentIndex = index;
+      }
+    }
+  })
+  const bestComment = data[commentIndex].body
 
-  const content = await getContent(lastComment, repo, owner, pullRequest);
+  const content = await getContent(bestComment, repo, owner, pullRequest);
   const [ userName ] = content;
   createTable(content);
   saveLocalStorage(repo, pullRequest, userName);
